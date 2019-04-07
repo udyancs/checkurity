@@ -1,4 +1,4 @@
-package com.us.app.checkurity.config;
+package com.us.app.checkurity.auth;
 
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -15,7 +15,7 @@ public class MyAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
-        if ("Udyan".equals(username) && "pass".equals(password)) {
+        if ("weather".equals(username) && "password".equals(password)) {
             return new UsernamePasswordAuthenticationToken(username, password, Collections.emptyList());
         }else {
             throw new BadCredentialsException("Unable to authenticate");

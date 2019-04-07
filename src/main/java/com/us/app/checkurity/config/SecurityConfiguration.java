@@ -1,5 +1,6 @@
 package com.us.app.checkurity.config;
 
+import com.us.app.checkurity.auth.MyAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,8 +11,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
+/**
+ * @author Udyan Shardhar
+ * Security related beans and configurations
+ */
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private MyAuthenticationProvider myAuthenticationProvider;
@@ -22,8 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         authenticationManagerBuilder.authenticationProvider(myAuthenticationProvider);
         authenticationManagerBuilder
                 .inMemoryAuthentication()
-                .withUser("justice")
-                .password(passwordEncoder().encode("pass"))
+                .withUser("udyan")
+                .password(passwordEncoder().encode("password"))
                 .roles("USER");
     }
 
@@ -31,11 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
 
         httpSecurity
-                .httpBasic()
-                .and()
                 .authorizeRequests()
-                .antMatchers("/api/*")
-                .authenticated();
+                .anyRequest().authenticated()
+                .and().httpBasic();
     }
 
     @Bean
