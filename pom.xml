@@ -9,13 +9,13 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.us.app</groupId>
-	<artifactId>checkurity</artifactId>
+	<artifactId>WeatherService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>checkurity</name>
-	<description>Frameowrk for authentication</description>
+	<name>WeatherService</name>
+	<description>WeatherService</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>1.9</java.version>
 	</properties>
 
 	<dependencies>
